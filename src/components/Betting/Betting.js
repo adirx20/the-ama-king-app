@@ -68,21 +68,27 @@ function Betting() {
     };
 
     return (
-        <div>
-            <h2>
+        <div className='betting'>
+            <h2 className='betting__title'>
                 Upcoming Games
             </h2>
-            <ul>
+            <ul className='betting__game-list'>
                 {
                     upcomingGames.map((game) => (
-                        <li key={game.id}>
-                            <p>
+                        <li
+                            className='betting__game-item'
+                            key={game.id}
+                        >
+                            <p className='betting__text'>
                                 Teams: {game.teams}
                             </p>
-                            <p>
+                            <p className='betting__text'>
                                 Match Date: {game.matchDate}
                             </p>
-                            <button onClick={() => handleGameSelect(game)}>
+                            <button
+                                className='betting__button'
+                                onClick={() => handleGameSelect(game)}
+                            >
                                 Predict Scores
                             </button>
                         </li>
@@ -92,26 +98,31 @@ function Betting() {
 
             {
                 selectedGame && (
-                    <div>
-                        <h3>
+                    <div className='betting__prediction-form'>
+                        <h3 className='betting__title'>
                             Predict Scores
                         </h3>
-                        <p>
+                        <p className='betting__text'>
                             Selected Game: {selectedGame.teams}
                         </p>
                         <input
-                            type="number"
-                            placeholder="Home Team Score"
+                            className='betting__input'
+                            type='number'
+                            placeholder='Home Team Score'
                             value={homeTeamScore}
                             onChange={handleHomeTeamScoreChange}
                         />
                         <input
-                            type="number"
-                            placeholder="Away Team Score"
+                            className='betting__input'
+                            type='number'
+                            placeholder='Away Team Score'
                             value={awayTeamScore}
                             onChange={handleAwayTeamScoreChange}
                         />
-                        <button onClick={handlePredictScores}>
+                        <button
+                            className='betting__button'
+                            onClick={handlePredictScores}
+                        >
                             Predict
                         </button>
                     </div>
