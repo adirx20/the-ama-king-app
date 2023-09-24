@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import Betting from './Betting';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Betting from '../Betting/Betting';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import firebase from 'firebase/app';
-import firebase from 'firebase/auth';
+import 'firebase/auth';
 import firebaseConfig from '../../firebaseConfig';
 
 function App() {
@@ -17,11 +17,11 @@ function App() {
           {/* Add navigation links or components here */}
         </header>
         <main>
-          <Switch>
+          <Routes>
             {/* Define routes for your app */}
             <Route path='/' exact component={Betting} />
             {/* Add more routes as needed */}
-          </Switch>
+          </Routes>
         </main>
       </div>
     </Router>

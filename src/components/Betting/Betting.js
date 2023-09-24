@@ -27,6 +27,17 @@ function Betting() {
         setSelectedGame(game);
     };
 
+    // Input changes
+    const handleHomeTeamScoreChange = (e) => {
+        e.preventDefault();
+        setHomeTeamScore(e.target.value);
+    };
+
+    const handleAwayTeamScoreChange = (e) => {
+        e.preventDefault();
+        setAwayTeamScore(e.target.value);
+    };
+
     // Function to handle when the user predicts scores
     const handlePredictScores = () => {
         // Ensure the user has selected a game and entered valid scores
@@ -58,36 +69,54 @@ function Betting() {
 
     return (
         <div>
-            <h2>Upcoming Games</h2>
+            <h2>
+                Upcoming Games
+            </h2>
             <ul>
-                {upcomingGames.map((game) => (
-                    <li key={game.id}>
-                        <p>Teams: {game.teams}</p>
-                        <p>Match Date: {game.matchDate}</p>
-                        <button onClick={() => handleGameSelect(game)}>Predict Scores</button>
-                    </li>
-                ))}
+                {
+                    upcomingGames.map((game) => (
+                        <li key={game.id}>
+                            <p>
+                                Teams: {game.teams}
+                            </p>
+                            <p>
+                                Match Date: {game.matchDate}
+                            </p>
+                            <button onClick={() => handleGameSelect(game)}>
+                                Predict Scores
+                            </button>
+                        </li>
+                    ))
+                }
             </ul>
 
-            {selectedGame && (
-                <div>
-                    <h3>Predict Scores</h3>
-                    <p>Selected Game: {selectedGame.teams}</p>
-                    <input
-                        type="number"
-                        placeholder="Home Team Score"
-                        value={homeTeamScore}
-                        onChange={(e) => setHomeTeamScore(e.target.value)}
-                    />
-                    <input
-                        type="number"
-                        placeholder="Away Team Score"
-                        value={awayTeamScore}
-                        onChange={(e) => setAwayTeamScore(e.target.value)}
-                    />
-                    <button onClick={handlePredictScores}>Predict</button>
-                </div>
-            )}
+            {
+                selectedGame && (
+                    <div>
+                        <h3>
+                            Predict Scores
+                        </h3>
+                        <p>
+                            Selected Game: {selectedGame.teams}
+                        </p>
+                        <input
+                            type="number"
+                            placeholder="Home Team Score"
+                            value={homeTeamScore}
+                            onChange={handleHomeTeamScoreChange}
+                        />
+                        <input
+                            type="number"
+                            placeholder="Away Team Score"
+                            value={awayTeamScore}
+                            onChange={handleAwayTeamScoreChange}
+                        />
+                        <button onClick={handlePredictScores}>
+                            Predict
+                        </button>
+                    </div>
+                )
+            }
         </div>
     );
 }
