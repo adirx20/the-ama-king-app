@@ -7,7 +7,7 @@ function Betting() {
     const [homeTeamScore, setHomeTeamScore] = useState('');
     const [awayTeamScore, setAwayTeamScore] = useState('');
 
-    const apiUrl = 'API_URL';
+    const apiUrl = 'https://api-football-v1.p.rapidapi.com/v3/timezone';
 
     useEffect(() => {
         axios
@@ -16,6 +16,7 @@ function Betting() {
                 // Assuming the API response contains an array of upcoming games
                 const gamesData = res.data;
                 setUpcomingGames(gamesData);
+                console.log('res: ', gamesData);
             })
             .catch((error) => {
                 console.log('Error: ', error);
